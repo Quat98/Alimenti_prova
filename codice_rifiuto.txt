@@ -1,0 +1,213 @@
+switch(i){
+						case 1:
+			        		strcpy(stringa, leggi_campo(tmp, i));
+			        		catalogo[j].id=atoi(stringa);
+			        		break;
+
+						case 2:
+			        		strcpy(catalogo[j].nome_alimento, leggi_campo(tmp, i));
+			        		break;
+
+						case 3:
+			        		strcpy(catalogo[j].quant_campione, leggi_campo(tmp, i));
+			        		break;
+
+						case 4:
+			        		strcpy(catalogo[j].soglia_spesa, leggi_campo(tmp, i));
+			        		break;
+
+						case 5:
+			        		strcpy(stringa, leggi_campo(tmp, i));
+			        		catalogo[j].kcal=atoi(stringa);
+			        		break;
+
+						default:
+							break;
+		        	}
+		        	
+		        	
+		        	
+		        	
+		        	
+		        	
+		        	
+		        	
+		        	
+		        	
+		        	int visualizza_dati(studenti* elenco_studenti,int  max_studenti){
+		
+		printf("*********************************VISUALIZZAZIONE DATI DA FILE CARICATO***********************************");
+		for(int i=0;i<max_studenti;i++){
+		  printf("%20s%20s%20d%20d\n", elenco_studenti[i].nome, elenco_studenti[i].cognome, elenco_studenti[i].matricola, elenco_studenti[i].voto );
+		}
+    
+   
+}
+		        	
+		        	
+		        	
+		        	
+		        	
+		        	
+		        	
+		        	
+		        	
+		        	for(int j=0;j<num_alim_spesa;j++){
+    	//printf("%s\n", catalogo_alimenti[j].nome_alimento);
+    	if(num_tuple_database!=0){
+			while(fgets(line, LUNG_TUPLA, stream_database))// ripeti fino a quando é possibile prelevare una riga
+				{
+					char* tmp = strdup(line);
+					//printf("%s\n", leggi_campo(tmp, 2));
+					if(strcmp(catalogo_alimenti[j].nome_alimento, leggi_campo(tmp, 2))==0){
+						flag_presente=1;
+						//char* tmp = strdup(line);
+
+					}
+				}
+    	}
+    	if(flag_presente!=0){
+    		printf("%s presente\n", catalogo_alimenti[j].nome_alimento );
+    	}else{
+    		
+    		//fprintf(stream_database,"%d;%s;%s;Soglia;%d\n", id, catalogo_alimenti[j].nome_alimento, set_q_camp(catalogo_alimenti[j].unita_misura)/*,set_soglia_spesa(catalogo_alimenti[j].quantita, catalogo_alimenti[j].unita_misura)*/, input_kcal(catalogo_alimenti[j].nome_alimento));
+    		printf("%s assente\n", catalogo_alimenti[j].nome_alimento );
+    		id++;
+    	}
+
+    	flag_presente=0;
+    	rewind(stream_database);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    //num_tuple_database+1;
+    
+    
+    //scrittura sequenziale database
+              //printf("%d;%s;%s;Soglia;%d\n", id, lista_alimenti.nome_alimento, lista_alimenti.quant_campione/*,set_soglia_spesa(catalogo_alimenti[j].quantita, catalogo_alimenti[j].unita_misura)*/, lista_alimenti.kcal);
+
+    		//fprintf(stream_database,"%d;%s;%s;Soglia;%d\n", id, catalogo_alimenti[j].nome_alimento, set_q_camp(catalogo_alimenti[j].unita_misura)/*,set_soglia_spesa(catalogo_alimenti[j].quantita, catalogo_alimenti[j].unita_misura)*/, input_kcal(catalogo_alimenti[j].nome_alimento));
+
+    
+    
+    
+    
+    //cancellazione riga
+    	char filename[LUNG_NOME_FILE];
+			strcpy(filename,"");
+			strcat(filename, "../src/alimenti_frigo.csv"); //accodo al nome del file il formato(in questo caso csv)
+			//printf("%d\n",num_tuple);
+			//alim_spesa catalogo[num_tuple];
+
+		    FILE *fileptr1, *fileptr2;
+		    int delete_line, temp = 1;
+
+		    //open file in read mode
+		    fileptr1 = fopen(filename, "r");
+		    char line[LUNG_TUPLA];//dichiariamo la stringa che conterrá l'intera tupla proveniente dal file
+
+
+		    if(fileptr1== NULL) {
+		          perror("Error opening file");
+		       }
+
+		    while(fgets(line, LUNG_TUPLA, fileptr1)) {
+		        printf("%s\n", line);
+		    }
+
+		    rewind(fileptr1);
+		    printf(" \n Enter line number of the line to be deleted:");
+		    scanf("%d", &delete_line);
+		    //open new file in write mode
+		    fileptr2 = fopen("../src/replica.csv", "w");
+		    while (fgets(line, LUNG_TUPLA,  fileptr1))
+		    {
+		        //except the line to be deleted
+		        if (temp != delete_line)
+		        {
+		            //copy all lines in file replica.c
+		            fprintf(fileptr2,"%s",line);
+		        }
+		            temp++;
+
+		    }
+		    fclose(fileptr1);
+		    fclose(fileptr2);
+		    remove(filename);
+		    //rename the file replica.c to original name
+		    rename("../src/replica.csv", filename);
+		    printf("\n The contents of file after being modified are as follows:\n");
+		    fileptr1 = fopen(filename, "r");
+		    while (fgets(line, LUNG_TUPLA,  fileptr1))
+		    {
+		        printf("%s", line);
+
+		    }
+		    fclose(fileptr1);
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		                //SCRITTURA FILE SEQUENZIALE
+            //for(int i=0; i<num_alimenti;i++){
+
+				//fprintf(fp, "%d;%s;%.1f%s;%d/%d/%d\n", id, catalogo_alimenti[i].nome_alimento, catalogo_alimenti[i].quantita, catalogo_alimenti[i].unita_misura, catalogo_alimenti[i].scadenza.giorno, catalogo_alimenti[i].scadenza.mese, catalogo_alimenti[i].scadenza.anno); //aggiungi il dato che ci interessa
+				//id++;
+			//}
+
+
+
+			//printf("\n %s file aggiornato",filename);//stampa che il file é stato aggiornato con successo
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			//richiamo la funzione file exist per vedere se il file con il nome che ho scritto esiste oppure no. In caso non esista allora:
+			/*
+			fp=fopen(filename,"w+"); //crea ed apri in scrittura un file con il nome file sopra dichiarato
+
+			 //stampa di volta in volta ogni riga della matrice all'interno del file
+			for(int i=0;i<num_alimenti;i++){
+
+				//fprintf(fp,"%s;",catalogo_alimenti[i].nome_alimento);
+				//fprintf(fp,"%s;",catalogo_alimenti[i]);
+
+			}
+
+			fclose(fp); //chiudi il file
+
+			printf("\n %s file creato",filename); //stampa che il file é stato creato con successo*/
+
+		 // se il file invece é giá presente allora effettua un update aggiungendo dati alla coda del file
