@@ -7,7 +7,7 @@
 
 
 #include "file_alimenti_operation.h"
-
+#include "file_ricette_operation.h"
 
 
 //menu che in base alla scelta effettuata(al numero premuto) richiama la funzione ad essa asscociata
@@ -19,6 +19,7 @@ int menu_alimenti(){
 		printf("Selezionare [2] riduci quantita' alimento da frigo\n");
 		printf("Selezionare [3] per visualizzare il database degli alimenti memorizzati\n");
 		printf("Selezionare [4] per visualizzare alimenti attualmente nel frigo\n");
+		printf("Selezionare [5] per aggiungere ricette al frigo\n");
 		printf("Selezionare [0] per uscire\n");
 
 
@@ -46,6 +47,10 @@ int menu_alimenti(){
 
 			case 4:
 				visualizza_frigo();//visualizza gli alimenti che abbiamo memorizzato nel frigo
+				break;
+
+			case 5:
+				lettura_ricette();//visualizza gli alimenti che abbiamo memorizzato nel frigo
 				break;
 
 			default:

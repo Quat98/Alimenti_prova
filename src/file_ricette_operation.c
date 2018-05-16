@@ -71,23 +71,15 @@ int lettura_ricette(){
 
 		        	switch(i){//controllo il campo
 						case CMP_NOME_RIC:// se il campo é il primo(il nome dell'alimento):
-							strcpy(carica_ricette[i].nome_ricetta, leggi_campo(tmp,i));
+							strcpy(carica_ricette[indice_ricetta].nome_ricetta, leggi_campo(tmp,i));
 
 			        		break;//
 
 						case CMP_INGR:// se il campo é il secondo(la quantita dell'alimento):
-							strcpy(str_lavoro, leggi_campo(tmp,i));
-							int id_ingrediente=0;
 
-							do{
-								tmp=strdup(str_lavoro);
-								strcpy(carica_ricette[i].ingredienti[id_ingrediente], leggi_campo_ricetta(tmp,i));
-								id_ingrediente++;
-							}while(strcmp(carica_ricette[i].ingredienti[id_ingrediente-1],""));
-			        		break;
 
 						case CMP_TEMP_PREP:// se il campo é il terzo(la scadenza dell'alimento):
-							strcpy(carica_ricette[i].tempo_prep, leggi_campo(tmp,i));
+							strcpy(carica_ricette[indice_ricetta].tempo_prep, leggi_campo(tmp,i));
 
 			        		break;
 						case CMP_PREP:// se il campo é il terzo(la scadenza dell'alimento):
@@ -95,7 +87,7 @@ int lettura_ricette(){
 			        		break;
 
 						case CMP_COMPLES:// se il campo é il terzo(la scadenza dell'alimento):
-							strcpy(carica_ricette[i].complessita, leggi_campo(tmp,i));
+							strcpy(carica_ricette[indice_ricetta].complessita, leggi_campo(tmp,i));
 
 			        		break;
 
@@ -111,6 +103,10 @@ int lettura_ricette(){
 
 		//una volta caricato l'array di struct passiamo all'aggiornamento effettivo del frigo e alla memorizzazione degli alimenti
 		//aggiorna_frigo(lista_spesa,indice_alimento);
+
+		for(int i=0;i<1;i++){
+			printf("%s\n%s\n%s\n", carica_ricette[i].nome_ricetta, carica_ricette[i].tempo_prep, carica_ricette[i].complessita);
+		}
 
 		return 1;
 	}
